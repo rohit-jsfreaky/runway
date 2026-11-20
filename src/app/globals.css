@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Runway: airport wayfinding. White, charcoal, signal yellow for "act now", mono times like a departures board. */
+:root {
+  --paper: #ffffff;
+  --wash: #f4f5f6;
+  --ink: #15171a;
+  --ink-2: #3b4048;
+  --muted: #5f6670;
+  --faint: #9aa0a9;
+  --line: #e2e4e8;
+  --rule: #c9ced6;
+  --signal: #ffcc00;
+  --signal-soft: #fff6cc;
+  --red: #b8142b;
+  --red-soft: #fdecef;
+  --amber: #8f5a00;
+  --green: #1d7347;
+  --green-soft: #e5f3eb;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-wash: var(--wash);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-red: var(--red);
+  --color-red-soft: var(--red-soft);
+  --color-amber: var(--amber);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --font-sans: var(--font-overpass), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-overpass-mono), Menlo, monospace;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-overpass), "Helvetica Neue", Arial, sans-serif; }
+::selection { background: var(--signal); }
+
+@layer components {
+  .sign { font-family: var(--font-overpass-mono), Menlo, monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 3px; font-weight: 700; font-size: 14px; padding: 8px 14px; white-space: nowrap; transition: background-color 120ms ease, border-color 120ms ease; }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-ink { background: var(--ink); color: #fff; }
+  .btn-ink:hover:not(:disabled) { background: #2b2f35; }
+  .btn-signal { background: var(--signal); color: var(--ink); }
+  .btn-signal:hover:not(:disabled) { background: #f2c200; }
+  .btn-line { background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn-line:hover:not(:disabled) { background: var(--wash); }
+  .input { width: 100%; background: var(--paper); border: 1.5px solid var(--rule); border-radius: 3px; padding: 7px 10px; font-size: 14px; outline: none; transition: border-color 120ms ease; }
+  .input:focus { border-color: var(--ink); }
+  .cell-input { width: 100%; background: transparent; border: 1px solid transparent; border-radius: 3px; padding: 3px 6px; font-size: 13px; outline: none; }
+  .cell-input:hover { border-color: var(--line); }
+  .cell-input:focus { border-color: var(--ink); background: var(--paper); }
+  .cell-input::placeholder { color: var(--faint); }
+  .stripes { background-image: repeating-linear-gradient(-45deg, var(--signal) 0 14px, var(--ink) 14px 28px); }
+  .scroll-thin { scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
+}

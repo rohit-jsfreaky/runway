@@ -1,0 +1,6 @@
+component,version,owner,where
+PostgreSQL,13,Sample: Data team,Sample: orders database (managed)
+Kubernetes,1.31,Sample: Platform team,Sample: production cluster
+Python,3.10,Sample: Data team,Sample: nightly reports job
+Node.js,20,Sample: Web team,Sample: storefront
+Redis,7.2,Sample: Platform team,Sample: session cache
