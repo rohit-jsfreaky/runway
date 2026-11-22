@@ -10,6 +10,8 @@ against [endoflife.date](https://endoflife.date), and writes three things:
 
 Built with [Hyper Elements](https://github.com/hyper-elements/hyper-elements) for the Hyper Elements Template Challenge.
 
+**Live:** https://runway.rohitkashyapmrt.workers.dev
+
 ![Runway on Mastodon's repository: PostgreSQL 14 past end of life, Elasticsearch 8.19 ending within a year](media/board.png)
 
 ## Why this exists
@@ -78,8 +80,8 @@ come from `raw.githubusercontent.com`. Everything runs in the browser.
 
 ## How Hyper Elements is used
 
-The three outputs are **Hyper Elements templates** in `templates/`. The app renders them in a route handler
-(`src/app/api/render/route.ts`), and the CLI renders the same files.
+The three outputs are **Hyper Elements templates** in `templates/`. The app renders them in the browser
+(`src/lib/render-route.ts`, so the site runs on Cloudflare with no render server), and the CLI renders the same files.
 
 - **Typed fields with rules** (`templates/_shared/doc.tsx`): 1 to 80 items, each with a `status` that must be one of
   six values, dates that must be dates, and a count of places that must be a whole number. A value outside the rules
@@ -108,7 +110,7 @@ npm run check          # check the three templates with their example
 npm run plan           # docs/mastodon.json → out/docs/ (plan PDF, notice email, board PNG)
 npm run sample         # re-scan Mastodon live and rebuild the sample
 npm run preview:email  # the email as each email client draws it
-npm run build && npm start
+npm run build && npx wrangler dev   # the static site, served the way Cloudflare does
 ```
 
 ## Project layout
